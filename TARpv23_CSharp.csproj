@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>C__TARpv23</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <StartupObject>TARpv23_CSharp.MainClass</StartupObject>
+    <ApplicationIcon>pumpkin_lantern_icon_264131.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="pumpkin_lantern_icon_264131.ico" />
+  </ItemGroup>
+
+</Project>
