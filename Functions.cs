@@ -38,6 +38,5 @@ namespace C__TARpv23
                 return arv1 / arv2;
             }
         }
-        public static double StringToDouble()
     }
 }
