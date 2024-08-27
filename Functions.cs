@@ -19,7 +19,7 @@ namespace C__TARpv23
         }
 
         // Loo Arvuta() funktsioon mis sõltub 3 paraametrist: tehe, arv1,arv2 Kasuta if konstruktsioon
-        public static int Arvuta(string funktsioon ,int arv1, int arv2)
+        public static int Arvuta(string funktsioon, int arv1, int arv2)
         {
             if (funktsioon == "+")
             {
@@ -38,5 +38,23 @@ namespace C__TARpv23
                 return arv1 / arv2;
             }
         }
-    }
+
+        public static string kõrguseKategooria(double pikkus, string sugu)
+        {
+            string kategooriaFun;
+            if (sugu == "M")
+            {
+                if (pikkus <= 165) kategooriaFun = "lühike";
+                else if (pikkus >= 170 && pikkus <= 185) kategooriaFun = "keskmeline";
+                else kategooriaFun = "pikk";
+            }
+            else
+            {
+                if (pikkus <= 155) kategooriaFun = "lühike";
+                else if (pikkus >= 160 && pikkus <= 175) kategooriaFun = "keskmeline";
+                else kategooriaFun = "pikk";
+            }
+            return kategooriaFun;
+        }
+    } 
 }
