@@ -6,7 +6,7 @@
     <RootNamespace>C__TARpv23</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>C__TARpv23.Ulesanded</StartupObject>
+    <StartupObject>C__TARpv23.Massiivid_Kordus</StartupObject>
     <ApplicationIcon>pumpkin_lantern_icon_264131.ico</ApplicationIcon>
   </PropertyGroup>
 

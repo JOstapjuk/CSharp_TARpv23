@@ -2,12 +2,12 @@
 
 namespace C__TARpv23
 {
-    internal class Ulesanded
+    internal class Valikute_Konstrukt
     {
         public static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            //// Küsi ristkülikukujulise toa seinte pikkused ning arvuta põranda pindala. Küsi kasutajalt remondi tegemise soov, kui ta on positiivne, siis küsi kui palju maksab ruutmeeter ja leia põranda vahetamise hind
+            // Küsi ristkülikukujulise toa seinte pikkused ning arvuta põranda pindala. Küsi kasutajalt remondi tegemise soov, kui ta on positiivne, siis küsi kui palju maksab ruutmeeter ja leia põranda vahetamise hind
 
             Console.Write("Sisesta toa laiuse (m): ");
             double laius = Convert.ToDouble(Console.ReadLine()); // ToDouble() - Muudab stringi väärtuse topelttäpseks ujuvpunkti numbriks.
@@ -26,9 +26,9 @@ namespace C__TARpv23
 
             Console.WriteLine($"Põranda vahetus maksab: {kogumaksumus} eurot."); // $ - võimaldab meil sisestada muutujaid stringi literaalsesse ( {} )
 
-            ////------------------------------------------------------------
+            //------------------------------------------------------------
 
-            ////Leia 30% hinnasoodustusega hinna põhjal alghind
+            //Leia 30% hinnasoodustusega hinna põhjal alghind
 
             Console.Write("Sisesta hind 30% soodustusega: ");
             double hindSoodusega = Convert.ToDouble(Console.ReadLine());
@@ -39,13 +39,13 @@ namespace C__TARpv23
 
             //------------------------------------------------------------
 
-            // Küsi inimeselt pikkus ja sugu ning teata, kas ta on lühike, keskmine või pikk (mitu tingimusplokki võib olla üksteise sees).
+             //Küsi inimeselt pikkus ja sugu ning teata, kas ta on lühike, keskmine või pikk(mitu tingimusplokki võib olla üksteise sees).
 
-            double pikkus;
+            int pikkus;
             do
             {
                 Console.Write("Palun sisestage teie pikkus cm-s: ");
-                if (double.TryParse(Console.ReadLine(), out pikkus)) // TryParse(... out) - Üritab stringimuutujat double'is üle kanda, out
+                if (int.TryParse(Console.ReadLine(), out pikkus)) // TryParse(... out) - Üritab stringimuutujat double'is üle kanda, out - asendab väärtuse juba olemasoleva muutujaga
                 {
                     break;
                 }
@@ -53,7 +53,7 @@ namespace C__TARpv23
                 {
                     Console.WriteLine("Vale sisend. Palun sisestage numbrid.");
                 }
-            } while (true); 
+            } while (true);
 
 
             string sugu;
@@ -68,7 +68,7 @@ namespace C__TARpv23
             Console.WriteLine($"Te olete {kategooria} pikkus.");
 
             //------------------------------------------------------------
-            // Kauplus
+             //Kauplus
 
             bool piim = false;
             bool sai = false;
@@ -139,22 +139,22 @@ namespace C__TARpv23
 
             if (piim == true)
             {
-                kogumaksumusKaup += 0.90; 
+                kogumaksumusKaup += 0.90;
             }
             if (sai == true)
             {
-                kogumaksumusKaup += 1.60; 
+                kogumaksumusKaup += 1.60;
             }
             if (leib == true)
             {
-                kogumaksumusKaup += 1.50; 
+                kogumaksumusKaup += 1.50;
             }
 
             Console.WriteLine($"Kaupade maksumus saab olema:: {kogumaksumusKaup:F2} eurot");
 
             //------------------------------------------------------------
 
-            // Küsi temperatuur ning teata, kas see on üle kaheksateistkümne kraadi (soovitav toasoojus talvel).
+             //Küsi temperatuur ning teata, kas see on üle kaheksateistkümne kraadi(soovitav toasoojus talvel).
             Console.Write("Palun sisestage soojusseisund: ");
             string temperatuurSisu = Console.ReadLine();
 
@@ -169,6 +169,46 @@ namespace C__TARpv23
             {
                 Console.WriteLine("Teie sisestatud temperatuur ei ole üle kaheksateistkümne kraadi.");
             }
+
+
+            //------------------------------------------------------------
+
+            //Klassi töö
+            for (int i = 0; i < 7; i++)
+            {
+                Random random = new Random();
+                int paev_nr = random.Next(-4,30);
+                string paeva_nimetus = Functions.Paevad(paev_nr);
+                Console.WriteLine(paeva_nimetus);
+            }
+
+            //-----------------------
+
+            string[] nimed = new string[5] { "Anna", "Inna", "Oksana", "Pavel", "Karl" };
+            // v1
+            for (int i = 0; i < nimed.Length; i++)
+            {
+                Console.WriteLine(nimed[i]);
+            }
+            // v2
+            foreach (string nimi in nimed)
+            {
+                Console.WriteLine(nimi);
+            }
+            // v3
+            int n = 0;
+            while (n<nimed.Length)
+            {
+                Console.WriteLine(nimed[n]);
+                n++;
+            }
+            // v4
+            do
+            {
+                Console.WriteLine(nimed[n-1]);
+                n--;
+            }
+            while (n>0); //!=
 
         }
     }
