@@ -36,7 +36,8 @@ namespace C__TARpv23
             }
 
             // 2* Küsi kasutajalt viis arvu, salvesta neid massiivi ning väljasta nende summa, aritmeetiline keskmine ja korrutis.
-
+            Console.WriteLine("Kirjuta 5 numbrid: ");
+            Console.ReadLine();
 
         }
     }
