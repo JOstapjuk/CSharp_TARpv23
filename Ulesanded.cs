@@ -151,6 +151,25 @@ namespace C__TARpv23
             }
 
             Console.WriteLine($"Kaupade maksumus saab olema:: {kogumaksumusKaup:F2} eurot");
+
+            //------------------------------------------------------------
+
+            // Küsi temperatuur ning teata, kas see on üle kaheksateistkümne kraadi (soovitav toasoojus talvel).
+            Console.Write("Palun sisestage soojusseisund: ");
+            string temperatuurSisu = Console.ReadLine();
+
+            int temperatuur;
+            bool onEdukasSisestus = int.TryParse(temperatuurSisu, out temperatuur);
+
+            if (onEdukasSisestus && temperatuur > 18)
+            {
+                Console.WriteLine($"Teie sisestatud temperatuur on {temperatuur} kraadi. See on üle kaheksateistkümne kraadi.");
+            }
+            else
+            {
+                Console.WriteLine("Teie sisestatud temperatuur ei ole üle kaheksateistkümne kraadi.");
+            }
+
         }
     }
 }
