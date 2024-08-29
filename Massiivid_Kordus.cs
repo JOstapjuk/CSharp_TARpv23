@@ -36,6 +36,7 @@ namespace C__TARpv23
             }
 
             // 2* Küsi kasutajalt viis arvu, salvesta neid massiivi ning väljasta nende summa, aritmeetiline keskmine ja korrutis.
+
             Console.WriteLine("Sisesta 5 numbrid: ");
             int[] numbers = new int[5];
 
@@ -71,11 +72,11 @@ namespace C__TARpv23
             int summaarneVanus = 0;
             for (int i = 0; i < vanused.Length; i++)
             {
-                summaarneVanus += vanused[i];
+                summaarneVanus = Functions.Summa(vanused);
             }
 
 
-            double keskmineVanus = summaarneVanus / (double)vanused.Length;
+            double keskmineVanus = Functions.Keskmine(vanused);
 
             int vanimVanus = vanused[0];
             int noorimVanus = vanused[0];
@@ -106,11 +107,11 @@ namespace C__TARpv23
 
             string sisend = "";
 
-            while (sisend != "elevant")
+            do
             {
                 Console.WriteLine("Osta elevant ära!");
                 sisend = Console.ReadLine();
-            }
+            } while (sisend != "elevant");
 
             Console.WriteLine("Aitäh, et elevandi ostsid");
 
@@ -122,8 +123,7 @@ namespace C__TARpv23
             int katsed = 0;
             bool arvatiOigesti = false;
 
-            Console.WriteLine("Arvuti on mõelnud välja arvu vahemikus 1 kuni 100.");
-            Console.WriteLine("Sul on 5 katset, et seda ära arvata.");
+            Console.WriteLine("Programm on mõelnud välja arvu vahemikus 1 kuni 50, sul on 5 katset.");
 
 
             while (katsed < 5 && !arvatiOigesti)
@@ -148,9 +148,9 @@ namespace C__TARpv23
             }
 
 
-            if (!arvatiOigesti)
+            if (arvatiOigesti = false)
             {
-                Console.WriteLine($"Kahjuks ei arvanud sa õiget arvu ära. Arvuti mõtles välja arvu {arvutiArv}.");
+                Console.WriteLine($"Kahjuks ei arvanud sa õiget arvu ära. Programm mõtles välja arvu {arvutiArv}.");
             }
 
             // Küsi kasutajalt 4 arvu ning väljasta nendest koostatud suurim neliarvuline arv.
