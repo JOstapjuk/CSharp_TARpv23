@@ -94,6 +94,32 @@ namespace C__TARpv23
             return arvud;
         }
 
+        public static int Summa(int[] massiiv)
+        {
+            int sum = 0;
+            foreach (int num in massiiv)
+            {
+                sum += num;
+            }
+            return sum;
+        }
+
+        public static double Keskmine(int[] massiiv)
+        {
+            int totalSum = Summa(massiiv);
+            return (double)totalSum / massiiv.Length;
+        }
+
+         public static int Korrutis(int[] massiiv)
+        {
+            int result = 1;
+            foreach (int num in massiiv)
+            {
+                result *= num;
+            }
+            return result;
+        }
+
     }
 }
  
