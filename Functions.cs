@@ -106,8 +106,8 @@ namespace C__TARpv23
 
         public static double Keskmine(int[] massiiv)
         {
-            int totalSum = Summa(massiiv);
-            return (double)totalSum / massiiv.Length;
+            int SummaKokku = Summa(massiiv);
+            return (double)SummaKokku / massiiv.Length;
         }
 
          public static int Korrutis(int[] massiiv)
@@ -119,6 +119,17 @@ namespace C__TARpv23
             }
             return result;
         }
+
+        //public static int PaarisPaaritu(int[] arvud)
+        //{
+        //    List<int> paaris = new List<int>();
+        //    List<int> paaritu = new List<int>();
+
+        //    foreach (var num in arvud)
+        //    {
+                
+        //    }
+        //}
 
     }
 }

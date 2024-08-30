@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,7 +36,7 @@ namespace C__TARpv23
                 Console.WriteLine(arv * arv);
             }
 
-            // 2* Küsi kasutajalt viis arvu, salvesta neid massiivi ning väljasta nende summa, aritmeetiline keskmine ja korrutis.
+            //// 2* Küsi kasutajalt viis arvu, salvesta neid massiivi ning väljasta nende summa, aritmeetiline keskmine ja korrutis.
 
             Console.WriteLine("Sisesta 5 numbrid: ");
             int[] numbers = new int[5];
@@ -53,7 +54,7 @@ namespace C__TARpv23
             Console.WriteLine($"Aritmeetiline keskmine: {keskmine:F2}");
             Console.WriteLine($"Korrutis: {korrutis}");
 
-            // Küsi viielt kasutajalt nimed ja vanused, salvesta nende andmeid massiivi ning väljasta summaarne vanus, aritmeetiline keskmine, vaanema ja noorema inimeste nimed ja vanused.
+            //// Küsi viielt kasutajalt nimed ja vanused, salvesta nende andmeid massiivi ning väljasta summaarne vanus, aritmeetiline keskmine, vaanema ja noorema inimeste nimed ja vanused.
 
             string[] nimed = new string[5];
             int[] vanused = new int[5];
@@ -68,54 +69,48 @@ namespace C__TARpv23
                 vanused[i] = int.Parse(Console.ReadLine());
             }
 
-
-            int summaarneVanus = 0;
-            for (int i = 0; i < vanused.Length; i++)
-            {
-                summaarneVanus = Functions.Summa(vanused);
-            }
-
+            int summaarneVanus = Functions.Summa(vanused);
 
             double keskmineVanus = Functions.Keskmine(vanused);
 
             int vanimVanus = vanused[0];
             int noorimVanus = vanused[0];
-            string vanimaNimi = nimed[0];
-            string noorimaNimi = nimed[0];
+            string vanimNimi = nimed[0];
+            string noorimNimi = nimed[0];
 
             for (int i = 1; i < vanused.Length; i++)
             {
                 if (vanused[i] > vanimVanus)
                 {
                     vanimVanus = vanused[i];
-                    vanimaNimi = nimed[i];
+                    vanimNimi = nimed[i];
                 }
                 if (vanused[i] < noorimVanus)
                 {
                     noorimVanus = vanused[i];
-                    noorimaNimi = nimed[i];
+                    noorimNimi = nimed[i];
                 }
             }
 
 
             Console.WriteLine($"Summaarne vanus: {summaarneVanus}");
             Console.WriteLine($"Aritmeetiline keskmine vanus: {keskmineVanus:F2}");
-            Console.WriteLine($"Vanim kasutaja: {vanimaNimi}, vanus: {vanimVanus}");
-            Console.WriteLine($"Noorim kasutaja: {noorimaNimi}, vanus: {noorimVanus}");
+            Console.WriteLine($"Vanim kasutaja: {vanimNimi}, vanus: {vanimVanus}");
+            Console.WriteLine($"Noorim kasutaja: {noorimNimi}, vanus: {noorimVanus}");
 
-            // Ütle kasutajale "Osta elevant ära!". Senikaua korda küsimust, kuni kasutaja lõpuks ise kirjutab "elevant".
+            //// Ütle kasutajale "Osta elevant ära!". Senikaua korda küsimust, kuni kasutaja lõpuks ise kirjutab "elevant".
 
-            string sisend = "";
+            string sisend;
 
             do
             {
                 Console.WriteLine("Osta elevant ära!");
                 sisend = Console.ReadLine();
-            } while (sisend != "elevant");
+            } while (!string.Equals(sisend, "elevant", StringComparison.OrdinalIgnoreCase));
 
             Console.WriteLine("Aitäh, et elevandi ostsid");
 
-            // Mis arv mõtles välja arvuti? Kasuta vähemalt 5 katset, et seda teada.
+            //// Mis arv mõtles välja arvuti? Kasuta vähemalt 5 katset, et seda teada.
 
             int arvutiArv = random.Next(1, 50);
 
@@ -153,7 +148,7 @@ namespace C__TARpv23
                 Console.WriteLine($"Kahjuks ei arvanud sa õiget arvu ära. Programm mõtles välja arvu {arvutiArv}.");
             }
 
-            // Küsi kasutajalt 4 arvu ning väljasta nendest koostatud suurim neliarvuline arv.
+            //// Küsi kasutajalt 4 arvu ning väljasta nendest koostatud suurim neliarvuline arv.
 
             int[] arvudV2 = new int[4];
 
@@ -171,7 +166,7 @@ namespace C__TARpv23
             string suurimArv = $"{arvudV2[0]}{arvudV2[1]}{arvudV2[2]}{arvudV2[3]}";
 
 
-            Console.WriteLine($"Suurim neliarvuline arv on: {suurimArv}");
+            Console.WriteLine($"Suurim neliarvuline arv on: {int.Parse(suurimArv)}");
 
             // Korrutustabel väljata ekraanile sellisel kujul:
 
@@ -187,6 +182,72 @@ namespace C__TARpv23
 
                 Console.WriteLine();
             }
+
+
+            // Klassitöö 30.08.2024 Listid
+            List<string> abc = new List<string>();
+            try
+            {
+                foreach (string rida in File.ReadAllLines(@"..\..\..\ABC.txt"))
+                {
+                    abc.Add(rida);
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Fail ei saa leida!");
+            }
+
+            foreach (string e in abc)
+            {
+                Console.WriteLine(e);
+            }
+            Console.ReadLine();
+
+            //-----------------------------
+
+            ArrayList arrayList = new ArrayList();
+            arrayList.Add("Esimine");
+            arrayList.Add("Teine");
+            arrayList.Add("Kolmas");
+
+            Console.WriteLine("Otsing: ");
+            string vas=Console.ReadLine();
+            if (vas != null && arrayList.Contains(vas))
+            {
+                Console.WriteLine($"Otsitav element asub: {arrayList.IndexOf(vas)} kohal");
+            }
+            else 
+            {
+                Console.WriteLine($"Kokku oli {arrayList.Count} elemente vaid otsistav puudub");
+            }
+
+            arrayList.Clear();
+            arrayList.Insert(0, "Anna");
+            Console.WriteLine(arrayList);
+            //---------------------------------
+
+            List<Inimine> inimised = new List<Inimine>();
+            Inimine inimene1 = new Inimine();
+            inimene1.Nimi = "Pjotr 1";
+            inimene1.Vanus = 352;
+            Inimine inimene2 = new Inimine("Jelizaveta II");
+            inimene2.Vanus = 98;
+            Inimine inimene3 = new Inimine("Jelizaveta", 20);
+
+            inimised.Add(inimene1);
+            inimised.Add(inimene2);
+            inimised.Add(inimene3);
+
+            inimised.Add(new Inimine("Irina", 18));
+
+            foreach (Inimine inimene in inimised)
+            {
+                Console.WriteLine($"{inimene.Nimi} on {inimene.Vanus} aastat vana");
+            }
+
+
+
         }
     }
 }
