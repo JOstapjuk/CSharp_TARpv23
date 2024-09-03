@@ -110,7 +110,7 @@ namespace C__TARpv23
             return (double)SummaKokku / massiiv.Length;
         }
 
-         public static int Korrutis(int[] massiiv)
+        public static int Korrutis(int[] massiiv)
         {
             int result = 1;
             foreach (int num in massiiv)
@@ -120,16 +120,189 @@ namespace C__TARpv23
             return result;
         }
 
-        //public static int PaarisPaaritu(int[] arvud)
-        //{
-        //    List<int> paaris = new List<int>();
-        //    List<int> paaritu = new List<int>();
+        //----------------------------------------Ülesanne 4------------------------------------
 
-        //    foreach (var num in arvud)
-        //    {
-                
-        //    }
-        //}
+        public static void OtsiPealinn(Dictionary<string, string> maakonnad)
+        {
+            Console.WriteLine("Sisestage maakonna nimi:");
+            string maakond = Console.ReadLine();
+            bool leitud = false;
+
+            foreach (var paar in maakonnad)
+            {
+                if (paar.Value.ToLower() == maakond.ToLower())
+                {
+                    Console.WriteLine($"Maakonna '{maakond}' pealinn on {paar.Key}.");
+                    leitud = true;
+                    break;
+                }
+            }
+            if (!leitud)
+            {
+                Console.WriteLine($"Maakonda '{maakond}' ei leitud.");
+            }
+        }
+
+        public static void OtsiMaakond(Dictionary<string, string> maakonnad)
+        {
+            Console.WriteLine("Sisestage pealinna nimi:");
+            string pealinn = Console.ReadLine();
+            if (maakonnad.ContainsKey(pealinn))
+            {
+                Console.WriteLine($"Pealinna '{pealinn}' maakond on {maakonnad[pealinn]}.");
+            }
+            else
+            {
+                Console.WriteLine($"Pealinna '{pealinn}' ei leitud.");
+            }
+        }
+
+        public static void LisaUusMaakond(Dictionary<string, string> maakonnad)
+        {
+            Console.WriteLine("Sisestage uus maakonna nimi:");
+            string uusMaakond = Console.ReadLine();
+            Console.WriteLine("Sisestage uus pealinna nimi:");
+            string uusPealinn = Console.ReadLine();
+
+            if (maakonnad.ContainsKey(uusPealinn))
+            {
+                Console.WriteLine("See pealinn on juba olemas. Proovige uuesti.");
+            }
+            else
+            {
+                maakonnad.Add(uusPealinn, uusMaakond);
+                Console.WriteLine($"Maakond '{uusMaakond}' ja pealinn '{uusPealinn}' lisati edukalt.");
+            }
+        }
+
+        public static void TestiTeadmisi(Dictionary<string, string> maakonnad)
+        {
+            int õiged = 0;
+            int valed = 0;
+            Random rnd = new Random();
+
+            List<string> pealinnad = new List<string>(maakonnad.Keys);
+
+            for (int i = 0; i < 5; i++)
+            {
+                string juhuslikPealinn = pealinnad[rnd.Next(pealinnad.Count)];
+                Console.WriteLine($"Milline on maakond pealinnale '{juhuslikPealinn}'?");
+                string vastus = Console.ReadLine();
+
+                if (vastus.ToLower() == maakonnad[juhuslikPealinn].ToLower())
+                {
+                    Console.WriteLine("Õige!");
+                    õiged++;
+                }
+                else
+                {
+                    Console.WriteLine($"Vale! Õige vastus on {maakonnad[juhuslikPealinn]}.");
+                    valed++;
+                }
+            }
+
+            double tulemus = (double)õiged / (õiged + valed) * 100;
+            Console.WriteLine($"\nTeie tulemus on: {tulemus}% (Õiged: {õiged}, Valed: {valed})");
+        }
+
+        public static void KuvaMaakonnadJaPealinnad(Dictionary<string, string> maakonnad)
+        {
+            Console.WriteLine("\nKõik maakonnad ja pealinnad:");
+            foreach (var paar in maakonnad)
+            {
+                Console.WriteLine($"Pealinn: {paar.Key}   Maakond: {paar.Value}");
+            }
+        }
+
+        //------------------------------------------Ülesanne 5--------------------------------------------
+
+        public static void OtsiEmail(Dictionary<string, string> inimised)
+        {
+            Console.WriteLine("Sisestage e-posti aadress:");
+            string email = Console.ReadLine();
+
+            bool leitud = false;
+            foreach (var pair in inimised)
+            {
+                if (pair.Value == email)
+                {
+                    Console.WriteLine($"E-posti aadress '{email}' kuulub {pair.Key}");
+                    leitud = true;
+                    break;
+                }
+            }
+
+            if (!leitud)
+            {
+                Console.WriteLine($"E-posti aadressi '{email}' ei leitud");
+            }
+        }
+
+        public static void LisaKasutaja(Dictionary<string, string> inimised)
+        {
+            Console.WriteLine("Sisestage uus kasutaja nimi:");
+            string nimi = Console.ReadLine();
+            Console.WriteLine("Sisestage uus e-posti aadress:");
+            string email = Console.ReadLine();
+
+            if (inimised.ContainsKey(nimi))
+            {
+                Console.WriteLine("See nimi on juba olemas.");
+            }
+            else if (inimised.ContainsValue(email))
+            {
+                Console.WriteLine("See e-posti aadress on juba olemas.");
+            }
+            else
+            {
+                inimised.Add(nimi, email);
+                Console.WriteLine($"Kasutaja '{nimi}' lisati edukalt.");
+            }
+        }
+
+        public static void UuendaKasutaja(Dictionary<string, string> inimised)
+        {
+            Console.WriteLine("Sisestage kasutaja nimi, keda soovite uuendada:");
+            string nimi = Console.ReadLine();
+
+            if (inimised.ContainsKey(nimi))
+            {
+                Console.WriteLine("Sisestage uus e-posti aadress:");
+                string newEmail = Console.ReadLine();
+                inimised[nimi] = newEmail;
+                Console.WriteLine($"Kasutaja '{nimi}' e-posti aadress uuendati edukalt.");
+            }
+            else
+            {
+                Console.WriteLine($"Kasutajat '{nimi}' ei leitud.");
+            }
+        }
+
+        public static void KustutaKasutaja(Dictionary<string, string> inimised)
+        {
+            Console.WriteLine("Sisestage kasutaja nimi, keda soovite kustutada:");
+            string nimi = Console.ReadLine();
+
+            if (inimised.ContainsKey(nimi))
+            {
+                inimised.Remove(nimi);
+                Console.WriteLine($"Kasutaja '{nimi}' kustutati edukalt.");
+            }
+            else
+            {
+                Console.WriteLine($"Kasutajat '{nimi}' ei leitud.");
+            }
+        }
+
+        public static void LoetleKasutajad(Dictionary<string, string> inimised)
+        {
+            Console.WriteLine("\nKõik kasutajad:");
+            foreach (var pair in inimised)
+            {
+                Console.WriteLine($"{pair.Key}: {pair.Value}");
+            }
+        }
+
 
     }
 }

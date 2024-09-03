@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TARpv23_CSharp;
 
 namespace C__TARpv23
 {
@@ -227,23 +228,27 @@ namespace C__TARpv23
             Console.WriteLine(arrayList);
             //---------------------------------
 
-            List<Inimine> inimised = new List<Inimine>();
-            Inimine inimene1 = new Inimine();
+            List<Inimene> inimesed = new List<Inimene>();
+            Inimene inimene1 = new Inimene();
             inimene1.Nimi = "Pjotr 1";
-            inimene1.Vanus = 352;
-            Inimine inimene2 = new Inimine("Jelizaveta II");
+            inimene1.Vanus = 52;
+            inimene1.Sugu = Sugu.mees;
+            inimene1.Pikkus = 200;
+            inimene1.Kaal = 100;
+            Inimene inimene2 = new Inimene("Jelizaveta II");
             inimene2.Vanus = 98;
-            Inimine inimene3 = new Inimine("Jelizaveta", 20);
-
-            inimised.Add(inimene1);
-            inimised.Add(inimene2);
-            inimised.Add(inimene3);
-
-            inimised.Add(new Inimine("Irina", 18));
-
-            foreach (Inimine inimene in inimised)
+            inimene2.Sugu = Sugu.naine;
+            inimene2.Pikkus = 160;
+            inimene2.Kaal = 70;
+            Inimene inimene3 = new Inimene("Jelizaveta", 20, Sugu.naine);
+            inimesed.Add(inimene1);
+            inimesed.Add(inimene2);
+            inimesed.Add(inimene3);
+            inimesed.Add(new Inimene("Irina", 18, Sugu.naine));
+            foreach (Inimene inimene in inimesed)
             {
-                Console.WriteLine($"{inimene.Nimi} on {inimene.Vanus} aastat vana");
+                Console.WriteLine(inimene.Nimi + " on " + inimene.Vanus + " aasta vana" + ".Ta on " + inimene.Sugu + " SBI=" + inimene.HB_vorrand());
+
             }
 
 
