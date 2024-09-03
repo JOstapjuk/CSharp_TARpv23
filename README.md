@@ -9,6 +9,9 @@ See C# projekt demonstreerib erinevaid funktsionaalsusi ja toiminguid, kasutades
 ### 1. **Functions.cs**
    - **Kirjeldus:** Sisaldab meetodeid erinevate funktsioonide jaoks
    - **Peamised meetodid:**
+   - `Korrutis`: Arvutab elementide toote täisarvulises massiivis.
+   - `Keskmine`: Arvutab elementide keskmise täisarvulises massiivis.
+   - 
      -`Korrutis`: Arvutab elementide toote täisarvulises massiivis.
      -`Keskmine`: Arvutab elementide keskmise täisarvulises massiivis.
      -`Summa`: Arvutab elementide summa täisarvulises massiivis.
