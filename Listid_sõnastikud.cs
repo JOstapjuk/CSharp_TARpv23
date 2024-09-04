@@ -9,14 +9,14 @@ namespace C__TARpv23
 {
     internal class Listid_sõnastikud
     {
-
+        //Tee see sõnastik väljaspool Maini, et saada juurdepääs sellele sõnastikule väljaspool seda faili. Peab olema samas "namespace"
         public static Dictionary<string, string> maakonnad = new Dictionary<string, string>
         {
-            { "Tartu", "Tartu maakond" },
-            { "Tallinn", "Harju maakond" },
-            { "Pärnu", "Pärnu maakond" },
-            { "Rakvere", "Lääne-Viru maakond" },
-            { "Haapsalu", "Lääne maakond" }
+            { "Tartu", "Tartumaa" },
+            { "Tallinn", "Harjumaa" },
+            { "Pärnu", "Pärnumaa" },
+            { "Rakvere", "Lääne-Virumaa" },
+            { "Haapsalu", "Läänemaa" }
         };
 
         public static void Main(string[] args)
@@ -26,6 +26,7 @@ namespace C__TARpv23
             Console.OutputEncoding = Encoding.UTF8;
 
             //Ülesanne 3
+            // tehke nimekiri, mis sisaldab tooteid samal ajal, iga loendi üksus on Toode klassi eksemplar.
             List<Toode> tooted = new List<Toode>
             {
                 new Toode("Õun", 52),
@@ -35,7 +36,7 @@ namespace C__TARpv23
                 new Toode("Brokkoli", 34)
             };
 
-
+            //Vanuse küsimine koos kontrollimisega
             int vanus;
             while (true)
             {
@@ -50,12 +51,13 @@ namespace C__TARpv23
                     }
                     break;
                 }
-                catch (Exception)
+                catch
                 {
-                    Console.WriteLine($"Vigane sisend. Palun proovige uuesti.");
+                    Console.WriteLine("Vigane sisend. Palun proovige uuesti.");
                 }
             }
 
+            // Soo küsimine kontrollimisega
             Sugu sugu;
             while (true)
             {
@@ -73,10 +75,11 @@ namespace C__TARpv23
                 }
                 else
                 {
-                    Console.WriteLine("Palun sisestage kehtiv sugu ('mees' või 'naine').");
+                    Console.WriteLine("Palun sisestage kehtiv sugu (mees või naine).");
                 }
             }
 
+            //Kõrguse küsimine koos kontrollimisega
             int pikkus;
             while (true)
             {
@@ -93,10 +96,11 @@ namespace C__TARpv23
                 }
                 catch
                 {
-                    Console.WriteLine($"Vigane sisend. Palun proovige uuesti.");
+                    Console.WriteLine("Vigane sisend. Palun proovige uuesti.");
                 }
             }
 
+            // Kaalu küsimine kontrollimisega
             double kaal;
             while (true)
             {
@@ -113,11 +117,12 @@ namespace C__TARpv23
                 }
                 catch
                 {
-                    Console.WriteLine($"Vigane sisend. Palun proovige uuesti.");
+                    Console.WriteLine("Vigane sisend. Palun proovige uuesti.");
                 }
             }
 
-            double aktiivsus = 1.2;
+            // Aktiivsustaseme küsimine koos kontrolliga
+            double eluviis;
             while (true)
             {
                 Console.WriteLine("Sisestage oma aktiivsustase:");
@@ -128,23 +133,23 @@ namespace C__TARpv23
                 Console.WriteLine("5. Väga kõrge aktiivsus");
                 try
                 {
-                    int aktiivsusValik = int.Parse(Console.ReadLine());
-                    switch (aktiivsusValik)
+                    int eluviisValik = int.Parse(Console.ReadLine());
+                    switch (eluviisValik)
                     {
                         case 1:
-                            aktiivsus = 1.2;
+                            eluviis = 1.2;
                             break;
                         case 2:
-                            aktiivsus = 1.375;
+                            eluviis = 1.375;
                             break;
                         case 3:
-                            aktiivsus = 1.55;
+                            eluviis = 1.55;
                             break;
                         case 4:
-                            aktiivsus = 1.725;
+                            eluviis = 1.725;
                             break;
                         case 5:
-                            aktiivsus = 1.9;
+                            eluviis = 1.9;
                             break;
                         default:
                             Console.WriteLine("Valige palun number vahemikus 1 kuni 5.");
@@ -154,20 +159,20 @@ namespace C__TARpv23
                 }
                 catch
                 {
-                    Console.WriteLine($"Vigane sisend. Palun proovige uuesti.");
+                    Console.WriteLine("Vigane sisend. Palun proovige uuesti.");
                 }
             }
 
+            // Uue inimese tegemine, kasutades klassi Inimine
+            Inimene inimene = new Inimene(vanus, sugu, pikkus, kaal, eluviis);
 
-            Inimene inimene = new Inimene(vanus, sugu, pikkus, kaal, aktiivsus);
-
-
+            // arvuta välja, kui palju kaloreid päevas inimene sööma peab 
             double paevaneKalorivajadus = inimene.HB_vorrand();
-            Console.WriteLine($"Teie päevane kalorivajadus on: {paevaneKalorivajadus} kcal");
+            Console.WriteLine($"Teie päevane kalorivajadus on: {paevaneKalorivajadus:F2} kcal");
 
-
+            // arvuta välja, kui palju gramme toidu inimene peab sööma, et jõuda oma igapäevaste kaloriteni
             Console.WriteLine("Tooted, mida saate süüa:");
-            foreach (var toode in tooted)
+            foreach (Toode toode in tooted)
             {
                 double maxToidukogus = paevaneKalorivajadus / toode.Kalorid * 100;
                 Console.WriteLine($"{toode.ToodeNimetus}: kuni {maxToidukogus:F1} grammi päevas");
@@ -175,7 +180,7 @@ namespace C__TARpv23
 
 
             //Ülesanne 4
-
+            // küsides, millist varianti inimene soovib kasutada
             while (true)
             {
                 Console.WriteLine("\nValige toiming:");
@@ -191,19 +196,19 @@ namespace C__TARpv23
                 switch (valik)
                 {
                     case "1":
-                        Functions.OtsiPealinn();
+                        Functions.OtsiPealinn(maakonnad);
                         break;
                     case "2":
-                        Functions.OtsiMaakond();
+                        Functions.OtsiMaakond(maakonnad);
                         break;
                     case "3":
-                        Functions.LisaUusMaakond();
+                        Functions.LisaUusMaakond(maakonnad);
                         break;
                     case "4":
-                        Functions.TestiTeadmisi();
+                        Functions.TestiTeadmisi(maakonnad);
                         break;
                     case "5":
-                        Functions.KuvaMaakonnadJaPealinnad();
+                        Functions.KuvaMaakonnadJaPealinnad(maakonnad);
                         break;
                     case "6":
                         Console.WriteLine("Programmi lõpetamine.");

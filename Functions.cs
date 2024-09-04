@@ -121,14 +121,15 @@ namespace C__TARpv23
         }
 
         //----------------------------------------Ülesanne 4------------------------------------
-
+        // Otsib etteantud maakonnanime alusel pealinna
+        // võttes andmeid sõnastikust "maakonnad"
         public static void OtsiPealinn(Dictionary<string, string> maakonnad)
         {
             Console.WriteLine("Sisestage maakonna nimi:");
             string maakond = Console.ReadLine();
             bool leitud = false;
 
-            foreach (var paar in maakonnad)
+            foreach (KeyValuePair<string, string> paar in maakonnad)
             {
                 if (paar.Value.ToLower() == maakond.ToLower())
                 {
@@ -143,6 +144,7 @@ namespace C__TARpv23
             }
         }
 
+        //Otsib etteantud pealinna nime alusel maakonda
         public static void OtsiMaakond(Dictionary<string, string> maakonnad)
         {
             Console.WriteLine("Sisestage pealinna nimi:");
@@ -157,6 +159,7 @@ namespace C__TARpv23
             }
         }
 
+        //Lisab sõnastikku uue maakonna ja pealinna, ka kontrollida, kui pealinn on juba sõnastikus
         public static void LisaUusMaakond(Dictionary<string, string> maakonnad)
         {
             Console.WriteLine("Sisestage uus maakonna nimi:");
@@ -175,17 +178,18 @@ namespace C__TARpv23
             }
         }
 
+        // Katsetab kasutaja teadmisi, esitades küsimusi maakondade ja pealinnade kohta.
         public static void TestiTeadmisi(Dictionary<string, string> maakonnad)
         {
             int õiged = 0;
             int valed = 0;
-            Random rnd = new Random();
+            Random random = new Random();
 
             List<string> pealinnad = new List<string>(maakonnad.Keys);
 
             for (int i = 0; i < 5; i++)
             {
-                string juhuslikPealinn = pealinnad[rnd.Next(pealinnad.Count)];
+                string juhuslikPealinn = pealinnad[random.Next(pealinnad.Count)];
                 Console.WriteLine($"Milline on maakond pealinnale '{juhuslikPealinn}'?");
                 string vastus = Console.ReadLine();
 
@@ -201,14 +205,15 @@ namespace C__TARpv23
                 }
             }
 
-            double tulemus = (double)õiged / (õiged + valed) * 100;
+            double tulemus = ((double)õiged / (õiged + valed)) * 100;
             Console.WriteLine($"\nTeie tulemus on: {tulemus}% (Õiged: {õiged}, Valed: {valed})");
         }
 
+        //Kuvab kõik maakonnad ja nende pealinnad.
         public static void KuvaMaakonnadJaPealinnad(Dictionary<string, string> maakonnad)
         {
             Console.WriteLine("\nKõik maakonnad ja pealinnad:");
-            foreach (var paar in maakonnad)
+            foreach (KeyValuePair<string, string> paar in maakonnad)
             {
                 Console.WriteLine($"Pealinn: {paar.Key}   Maakond: {paar.Value}");
             }
@@ -216,17 +221,18 @@ namespace C__TARpv23
 
         //------------------------------------------Ülesanne 5--------------------------------------------
 
+        //Otsib inimest(tema nime) e-posti järgi
         public static void OtsiEmail(Dictionary<string, string> inimised)
         {
             Console.WriteLine("Sisestage e-posti aadress:");
             string email = Console.ReadLine();
 
             bool leitud = false;
-            foreach (var pair in inimised)
+            foreach (KeyValuePair<string, string> paar in inimised)
             {
-                if (pair.Value == email)
+                if (paar.Value == email)
                 {
-                    Console.WriteLine($"E-posti aadress '{email}' kuulub {pair.Key}");
+                    Console.WriteLine($"E-posti aadress '{email}' kuulub {paar.Key}");
                     leitud = true;
                     break;
                 }
@@ -238,6 +244,7 @@ namespace C__TARpv23
             }
         }
 
+        //Lisab sõnastikku uue kasutaja, kontrollides olemasolevaid kasutajanimesid ja e-posti aadresse.
         public static void LisaKasutaja(Dictionary<string, string> inimised)
         {
             Console.WriteLine("Sisestage uus kasutaja nimi:");
@@ -260,6 +267,7 @@ namespace C__TARpv23
             }
         }
 
+        //Uuendab olemasoleva kasutaja e-posti aadressi.
         public static void UuendaKasutaja(Dictionary<string, string> inimised)
         {
             Console.WriteLine("Sisestage kasutaja nimi, keda soovite uuendada:");
@@ -278,6 +286,7 @@ namespace C__TARpv23
             }
         }
 
+        // Kustutab kasutaja sõnastikust "Inimised" kasutajanime põhjal.
         public static void KustutaKasutaja(Dictionary<string, string> inimised)
         {
             Console.WriteLine("Sisestage kasutaja nimi, keda soovite kustutada:");
@@ -294,10 +303,11 @@ namespace C__TARpv23
             }
         }
 
+        // Loetleb kõiki kasutajaid ja nende e-posti aadresse.
         public static void LoetleKasutajad(Dictionary<string, string> inimised)
         {
             Console.WriteLine("\nKõik kasutajad:");
-            foreach (var pair in inimised)
+            foreach (KeyValuePair<string, string> pair in inimised)
             {
                 Console.WriteLine($"{pair.Key}: {pair.Value}");
             }

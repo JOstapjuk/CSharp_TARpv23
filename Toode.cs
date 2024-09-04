@@ -9,9 +9,9 @@ namespace C__TARpv23
     internal class Toode
     { 
         public string ToodeNimetus { get; set; }
-        public double Kalorid { get; set; }
+        public int Kalorid { get; set; }
         public Toode() { }
-        public Toode(string toodeNimetus, double kalorid)
+        public Toode(string toodeNimetus, int kalorid)
         {
             ToodeNimetus = toodeNimetus;
             Kalorid = kalorid;

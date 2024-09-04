@@ -8,6 +8,7 @@ namespace C__TARpv23
 {
     internal class Ulesanne5
     {
+        // kahe sõnaraamatu tegemine kasutajatele ja inimestele kes on "andmebaasis"
         public static Dictionary<string, (string parool, string rolli)> kasutajas = new Dictionary<string, (string parool, string rolli)>
         {
             { "admin", ("admin", "admin") },
@@ -27,11 +28,13 @@ namespace C__TARpv23
         {
             Console.OutputEncoding = Encoding.UTF8;
 
+            // Kasutajanime ja parooli küsimine
             Console.Write("Kasutajanimi: ");
             string kasutajaNimi = Console.ReadLine();
             Console.Write("Parool: ");
             string parool = Console.ReadLine();
 
+            // kontrollides, kas see kasutaja on sõnastikus "Kasutajas", kui jah siis läheb valima, millist võimalust valida
             if (kasutajas.ContainsKey(kasutajaNimi) && kasutajas[kasutajaNimi].parool == parool)
             {
                 string rolli = kasutajas[kasutajaNimi].rolli;
@@ -40,18 +43,19 @@ namespace C__TARpv23
                 while (true)
                 {
                     Console.WriteLine("\nValige toiming:");
-                    Console.WriteLine("1. Otsi e-posti aadressi järgi");
+                    Console.WriteLine("1) Otsi e-posti aadressi järgi");
                     if (rolli == "admin")
                     {
-                        Console.WriteLine("2. Lisa uus kasutaja");
-                        Console.WriteLine("3. Uuenda olemasolevat kasutajat");
-                        Console.WriteLine("4. Kustuta kasutaja");
+                        Console.WriteLine("2) Lisa uus kasutaja");
+                        Console.WriteLine("3) Uuenda olemasolevat kasutajat");
+                        Console.WriteLine("4) Kustuta kasutaja");
                     }
-                    Console.WriteLine("5. Loetle kõik kasutajad");
-                    Console.WriteLine("6. Välju");
+                    Console.WriteLine("5) Loetle kõik kasutajad");
+                    Console.WriteLine("6) Välju");
 
                     string valik = Console.ReadLine();
 
+                    //Kui kasutaja ei ole admin siis on tal vähem võimalusi
                     switch (valik)
                     {
                         case "1":

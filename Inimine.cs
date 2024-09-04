@@ -18,7 +18,7 @@ namespace TARpv23_CSharp
         public Sugu Sugu { get; set; }
         public int Pikkus { get; set; }
         public double Kaal { get; set; }
-        public double Aktiivsus { get; set; }
+        public double Eluviis { get; set; }
         public Inimene() { }
         public Inimene(string nimi)
         {
@@ -35,13 +35,13 @@ namespace TARpv23_CSharp
             Vanus = vanus;
             Sugu = sugu;
         }
-        public Inimene(int vanus, Sugu sugu, int pikkus, double kaal, double aktiivsus)
+        public Inimene(int vanus, Sugu sugu, int pikkus, double kaal, double eluviis)
         {
             Vanus = vanus;
             Sugu = sugu;
             Pikkus = pikkus;
             Kaal = kaal;
-            Aktiivsus = aktiivsus;
+            Eluviis = eluviis;
         }
 
         public double HB_vorrand()
@@ -55,7 +55,7 @@ namespace TARpv23_CSharp
             {
                 SBI = 655 + (9.6 * Kaal) + (1.8 * Pikkus) - (4.7 * Vanus);
             }
-            return SBI * Aktiivsus;
+            return SBI * Eluviis;
         }
     }
 }
