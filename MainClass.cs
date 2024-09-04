@@ -19,6 +19,7 @@ namespace TARpv23_CSharp
             Functions.Tere(nimetus);
 
 
+
             Console.Write("Sisesta esimine arv: ");
             int a = int.Parse(Console.ReadLine());
             Console.Write("Sisesta teine arv: ");
